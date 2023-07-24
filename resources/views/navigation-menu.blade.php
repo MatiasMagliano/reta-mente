@@ -143,7 +143,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('games.index') }}">
-                Juegos
+                {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
 
