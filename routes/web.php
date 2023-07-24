@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::prefix('playgame')->name('game.')->group(function(){
+    Route::post('/{code}', [GameController::class, 'showGame'])->name('show');
+});
 
 Route::middleware([
     'auth:sanctum',
@@ -25,4 +29,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::resource('games', GameController::class);
 });

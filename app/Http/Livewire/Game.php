@@ -4,10 +4,10 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class TeacherLogin extends Component
+class Game extends Component
 {
     public function render()
     {
-        return view('livewire.teacher-login');
+        return view('livewire.game');
     }
 }
