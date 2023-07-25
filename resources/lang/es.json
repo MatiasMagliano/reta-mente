@@ -1,0 +1,23 @@
+{
+    "Dashboard": "Panel de control",
+    "Games": "Juegos",
+    "Available games": "Juegos disponibles",
+    "Language": "Idioma",
+    "Name": "Nombre",
+    "Game code": "Código de juego",
+    "Actions": "Acciones",
+    "Status": "Estado",
+    "Back": "Volver",
+    "There is no games to show": "No hay juegos para mostrar",
+    "See": "Ver",
+    "Edit": "Editar",
+    "Delete": "Eliminar",
+    "Showing": "Mostrando",
+    "to": "a",
+    "of": "de",
+    "results": "resuldatos",
+    "Search terms...": "Términos de búsqueda...",
+    "per page": "por página",
+    "pagination.previous": "Anterior",
+    "pagination.next": "Siguiente"
+}

@@ -2,26 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Question;
+use App\Models\Game;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index(): Renderable
     {
-        return view('livewire.game.paginated');
+        return view('games.index');
     }
 
-    // FUNCTION OUTSIDE RESOURCE ROUTE
-    public function showGame(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        $gameCode = $request->route('code');
-        $questions = Question::where('game_code', $gameCode)->get();
-
-        return view('game', [
-            'questions' => $questions,
-        ]);
+        //
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Game $game)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Game $game)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Game $game)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Game $game)
+    {
+        //
+    }
 }

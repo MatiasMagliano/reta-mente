@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GameController;
+use App\Http\Livewire\Game;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// LOCALIZATION routes
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::prefix('playgame')->name('game.')->group(function(){
     Route::post('/{code}', [GameController::class, 'showGame'])->name('show');
 });
