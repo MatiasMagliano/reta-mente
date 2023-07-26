@@ -27,7 +27,7 @@ Route::get('/', function () {
 });
 
 Route::prefix('playgame')->name('game.')->group(function(){
-    Route::post('/{code}', [GameController::class, 'showGame'])->name('show');
+    Route::post('/{code}', [GameController::class, 'PlayGame'])->name('play');
 });
 
 Route::middleware([

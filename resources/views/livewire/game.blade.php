@@ -1,4 +1,4 @@
-<div class="flex flex-col mt-4">
+<div>
     <div class="flex bg-white px-4 py-3 sm:px-6">
         <input wire:model="search_terms" class="form-input rounded-md shadow-sm mt-1 w-full"
             placeholder="{{ __('Search terms...') }}" type="text">
@@ -12,44 +12,37 @@
         </select>
         <button wire:click="clear" class="form-input rounded-md shadow-sm mt-1 outline-none text-gray-500">X</button>
     </div>
-    <table class="table-auto w-full">
-        <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
-            <tr>
-                <th class="px-4 py-2">{{ __('Name') }}</th>
-                <th class="px-4 py-2">{{ __('Game code') }}</th>
-                <th class="px-4 py-2">{{ __('Status') }}</th>
-                <th class="px-4 py-2">{{ __('Actions') }}</th>
-            </tr>
-        </thead>
-        <tbody class="text-sm divide-y divide-gray-100">
-            @forelse ($games as $game)
-                <tr>
-                    <td class="border px-4 py-2">{{ $game->name }}</td>
-                    <td class="border px-4 py-2 text-center">{{ $game->game_code }}</td>
-                    <td class="border px-4 py-2 text-center">desactivado</td>
-                    <td class="border px-4 py-4" style="width: 260px">
-                        <a href="{{ route('games.show', $game) }}"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ __('See') }}</a>
-                        <a href="{{ route('games.edit', $game) }}"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ __('Edit') }}</a>
-                        <a role="button" wire:click.prevent="delete('{{ $game->id }}')"
-                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">{{ __('Delete') }}</a>
-                    </td>
-                </tr>
-            @empty
-                <tr class="bg-red-400 text-white text-center">
-                    <td colspan="4" class="border px-4 py-2">{{ __('There is no games to show') }}</td>
-                </tr>
-            @endforelse
-        </tbody>
+
+    <div class="grid sm:flex sm:flex-col">
+        @foreach ($games as $game)
+            <div class="stats shadow m-3">
+                <div class="stat">
+                    <div class="stat-title">{{ $game->name }}</div>
+                    <div class="stat-value">{{ $game->game_code }}</div>
+                    <div class="stat-actions">
+                        @if ($game->status)
+                            <button class="btn btn-sm btn-error">{{ __('Stop') }}</button>
+                        @else
+                            <button class="btn btn-sm btn-success">{{ __('Play') }}</button>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-title">{{ __('Actions') }}</div>
+                    <div class="stat-actions">
+                        @include('partials.game-actions', ['game' => $game])
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+    <div>
         @if ($games->hasPages())
-            <tfoot class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
-                <tr>
-                    <td colspan="4" class="border px-4 py-2">
-                        {{ $games->links() }}
-                    </td>
-                </tr>
-            </tfoot>
+            <div>
+                {{ $games->links() }}
+            </div>
         @endif
-    </table>
+    </div>
 </div>

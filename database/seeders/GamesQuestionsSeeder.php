@@ -14,7 +14,7 @@ class GamesQuestionsSeeder extends Seeder
      */
     public function run(): void
     {
-        $maxGames = rand(10, 100);
+        $maxGames = rand(5, 20);
         for($i = 0; $i < $maxGames; $i++)
         {
             $game = Game::factory()->create();
